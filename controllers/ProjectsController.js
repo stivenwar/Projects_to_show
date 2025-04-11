@@ -3,6 +3,9 @@ import {__dirname} from "../config.js";
 
 
 export class ProjectsController{
+    static indexProjects(req, res){
+        res.sendFile(path.join(__dirname,'views/frondEndAngular', 'index.html'));
+    }
     static showProjects(req,res){
         res.sendFile(path.join(__dirname,'views', 'index.html'))
     }
