@@ -2,10 +2,11 @@
   "name": "projects_to_show",
   "version": "1.0.0",
   "description": "examples nodejs express",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "startDev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

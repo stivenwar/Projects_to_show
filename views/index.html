@@ -3,9 +3,8 @@
 <html>
 <head>
     <title>Timestamp Microservice | freeCodeCamp.org</title>
-    <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="/index.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -17,13 +16,13 @@
         <li><a href="api/2015-12-25?">[project url]/api/2015-12-25</a></li>
         <li><a href="api/1451001600000?">[project url]/api/1451001600000</a></li>
         <li><a id="date">Click to Date from api</a></li>
-        <li><a id="dateUnix" >Click to Date in UnixTime </a></li>
-    </ul>
 
-    <h2>Example Output:</h2>
-    <p>
-        <code id="codeShow"></code>
-    </p>
+    </ul>
+    <form id="form">
+        <label for="fecha">Selecciona una fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <button type="submit">Enviar</button>
+    </form>
 </div>
 <div class="footer">
     <p>
@@ -32,14 +31,26 @@
 </div>
 
 <script>
-    const date = document.getElementById('date');
-    const dateUnix = document.getElementById('dateUnix');
-    const yearNow = new Date().getFullYear();
-    const monthNow = new Date().getMonth()+1;
-    const dayNow = new Date().getDate();
-    const dataNow = yearNow+"-"+monthNow+"-"+dayNow;
-    date.href = "api/"+dataNow
-    console.log(dataNow)
+   function sendTimestamp(){
+       const dateLink = document.getElementById('date');
+       const dateUnix = document.getElementById('dateUnix');
+
+       const now = new Date();
+       const year = now.getFullYear();
+       const month = String(now.getMonth() + 1).padStart(2, '0');
+       const day = String(now.getDate()).padStart(2, '0');
+       const formattedDate = `${year}-${month}-${day}`;
+       dateLink.href = '/api/'+formattedDate;
+       console.log("Fecha actual:", formattedDate);
+   }
+   document.addEventListener('DOMContentLoaded',function (){
+       sendTimestamp();
+       document.getElementById('form').addEventListener('submit',function (e){
+            e.preventDefault();
+           const fecha = document.getElementById('fecha').value;
+           document.location.href = '/api/'+fecha;
+       })
+   })
 
 
 
