@@ -10,6 +10,7 @@ export class ProjectsController{
         res.sendFile(path.join(__dirname,'views', 'index.html'))
     }
     static timestampFunction(req, res){
+        console.log('paso por aqui')
         const rexd = new RegExp("^\\d{4}-([1-9]|1[0-2])-([1-9]|[12]\\d|3[01])$");
         const rexu = new RegExp("^\\d{13}$");
 
@@ -32,6 +33,13 @@ export class ProjectsController{
     static timestampEmpty(req,res){
         let resDate = new Date();
         res.json({ unix: resDate.getTime(), utc: resDate.toUTCString() });
+    }
+    static requestHeaderParseMicroservice(req, res){
+        let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const language = req.headers['accept-language'];
+        const software = req.headers['user-agent'];
+
+        res.json({ipadress:ip, language:language,software:software})
     }
 
 }
