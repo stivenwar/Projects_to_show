@@ -39,7 +39,7 @@ export class ProjectsController{
         const language = req.headers['accept-language'];
         const software = req.headers['user-agent'];
 
-        res.json({ipadress:ip, language:language,software:software})
+        res.json({ipaddress:ip, language:language,software:software})
     }
 
 }
