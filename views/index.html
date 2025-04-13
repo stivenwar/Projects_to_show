@@ -33,11 +33,30 @@
         <li><a href="/api/whoami">[base url]/api/whoami</a></li>
     </ul>
 </div>
+<hr />
+<h1>Url Shortener Microservice </h1>
+<hr />
+<div class="container">
+    <h2>Example Usage:</h2>
+
+    <form action="/api/shorturl" method="POST">
+        <fieldset>
+            <legend>URL Shortener</legend>
+            <label for="url_input">URL:</label>
+            <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/">
+            <input type="submit" value="POST URL">
+        </fieldset>
+    </form>
+    <ul>
+        <li><a href="/api/shorturl/1">[Project url]/api/shorturl/1</a></li>
+    </ul>
+</div>
 <div class="footer">
     <p>
         By <a href="">Esteban Guerra</a>
     </p>
 </div>
+
 
 <script>
    function sendTimestamp(){
